@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="welcome">
+    <text class="icon">🐟</text>
+    <text class="desc">轻松管理你的销售收入</text>
+  </view>
+  <view class="actions">
+    <button class="btn-primary" bindtap="goCreate">创建我的店铺</button>
+    <button class="btn-outline" bindtap="goJoin">加入已有店铺</button>
+  </view>
+</view>

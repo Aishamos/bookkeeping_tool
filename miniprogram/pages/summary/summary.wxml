@@ -1,0 +1,52 @@
+<view class="header">
+  <text class="header-label">今日已收</text>
+  <text class="header-amount">¥ {{todayAmount}}</text>
+  <text class="header-info">{{todayCount}}笔收款</text>
+</view>
+
+<view class="container">
+  <view class="card filter-card">
+    <text class="filter-label">从</text>
+    <picker mode="date" value="{{startDate}}" bindchange="onStartDateChange">
+      <view class="date-box">{{startDate}}</view>
+    </picker>
+    <text class="filter-label">至</text>
+    <picker mode="date" value="{{endDate}}" bindchange="onEndDateChange">
+      <view class="date-box">{{endDate}}</view>
+    </picker>
+    <view class="btn-filter" bindtap="loadSummary">查询</view>
+  </view>
+
+  <view class="card">
+    <view class="tab-switch">
+      <view class="tab {{tabType === 'daily' ? 'active' : ''}}" bindtap="switchTab" data-type="daily">日汇总</view>
+      <view class="tab {{tabType === 'monthly' ? 'active' : ''}}" bindtap="switchTab" data-type="monthly">月汇总</view>
+    </view>
+
+    <view wx:if="{{tabType === 'daily'}}">
+      <view class="summary-item" wx:for="{{dailyList}}" wx:key="date" bindtap="goDetail" data-date="{{item.date}}">
+        <text class="summary-date">{{item.dateFormatted}}</text>
+        <view class="summary-right">
+          <text class="summary-amount">¥ {{item.amountFixed}}</text>
+          <text class="summary-count">{{item.count}}笔</text>
+        </view>
+      </view>
+      <view class="empty" wx:if="{{dailyList.length === 0}}">
+        <text class="empty-text">暂无数据</text>
+      </view>
+    </view>
+
+    <view wx:if="{{tabType === 'monthly'}}">
+      <view class="summary-item" wx:for="{{monthlyList}}" wx:key="month">
+        <text class="summary-date">{{item.month}}</text>
+        <view class="summary-right">
+          <text class="summary-amount">¥ {{item.amountFixed}}</text>
+          <text class="summary-count">{{item.count}}笔</text>
+        </view>
+      </view>
+      <view class="empty" wx:if="{{monthlyList.length === 0}}">
+        <text class="empty-text">暂无数据</text>
+      </view>
+    </view>
+  </view>
+</view>

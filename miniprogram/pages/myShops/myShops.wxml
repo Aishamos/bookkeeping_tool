@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="card shop-list">
+    <view class="shop-item {{item._id === currentShopId ? 'active' : ''}}" wx:for="{{shops}}" wx:key="_id" bindtap="switchShop" data-id="{{item._id}}">
+      <view class="shop-icon" style="background: {{item.iconColor}};">🐟</view>
+      <view class="shop-info">
+        <text class="shop-name">{{item.name}}</text>
+        <text class="shop-desc">{{item.role === 'owner' ? '店主' : '成员'}} · {{item.memberCount}}人</text>
+      </view>
+      <view class="current-tag" wx:if="{{item._id === currentShopId}}">当前</view>
+    </view>
+
+    <view class="empty" wx:if="{{shops.length === 0}}">
+      <text class="empty-text">暂无店铺</text>
+    </view>
+  </view>
+
+  <view class="action-row">
+    <view class="action-box create" bindtap="goCreate">
+      <text class="action-icon">+</text>
+      <text class="action-text">创建店铺</text>
+    </view>
+    <view class="action-box join" bindtap="goJoin">
+      <text class="action-icon">🔗</text>
+      <text class="action-text">加入店铺</text>
+    </view>
+  </view>
+
+  <view class="note-box">
+    <text class="note-text"><text class="note-bold">说明：</text>点击店铺可切换当前使用的店铺。每个店铺的数据完全独立，互不影响。</text>
+  </view>
+</view>

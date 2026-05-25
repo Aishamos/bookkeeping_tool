@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="welcome">
+    <text class="icon">🔗</text>
+    <text class="title">输入邀请码加入店铺</text>
+    <text class="desc">向店铺创建者获取6位邀请码</text>
+  </view>
+
+  <view class="code-inputs">
+    <input class="code-input {{code[0] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[0]}}" bindinput="onInput" data-index="0" focus="{{focusIndex === 0}}" />
+    <input class="code-input {{code[1] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[1]}}" bindinput="onInput" data-index="1" focus="{{focusIndex === 1}}" />
+    <input class="code-input {{code[2] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[2]}}" bindinput="onInput" data-index="2" focus="{{focusIndex === 2}}" />
+    <input class="code-input {{code[3] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[3]}}" bindinput="onInput" data-index="3" focus="{{focusIndex === 3}}" />
+    <input class="code-input {{code[4] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[4]}}" bindinput="onInput" data-index="4" focus="{{focusIndex === 4}}" />
+    <input class="code-input {{code[5] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[5]}}" bindinput="onInput" data-index="5" focus="{{focusIndex === 5}}" />
+  </view>
+
+  <button class="btn-primary" bindtap="joinShop" disabled="{{code.join('').length < 6}}">加入店铺</button>
+</view>

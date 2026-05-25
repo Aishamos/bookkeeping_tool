@@ -1,0 +1,32 @@
+.header {
+  background: linear-gradient(135deg, #07C160, #06AD56);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-label { font-size: 14px; opacity: 0.9; display: block; }
+.header-amount { font-size: 36px; font-weight: bold; margin: 6px 0; display: block; }
+.header-info { font-size: 13px; opacity: 0.8; display: block; }
+
+.container { padding: 12px; }
+
+.record-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-left { display: flex; flex-direction: column; }
+.record-amount { font-size: 20px; font-weight: bold; color: #333; }
+.record-note { font-size: 13px; color: #888; margin-top: 4px; }
+.record-right { text-align: right; }
+.record-time { font-size: 14px; color: #666; display: block; }
+.record-status { font-size: 11px; color: #999; margin-top: 4px; display: block; }
+
+.empty { text-align: center; padding: 40px 0; }
+.empty-text { font-size: 14px; color: #999; }

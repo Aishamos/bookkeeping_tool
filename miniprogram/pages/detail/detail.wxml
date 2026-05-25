@@ -1,0 +1,22 @@
+<view class="header">
+  <text class="header-label">{{date}} 已收</text>
+  <text class="header-amount">¥ {{totalAmount}}</text>
+  <text class="header-info">共{{count}}笔收款</text>
+</view>
+
+<view class="container">
+  <view class="record-item" wx:for="{{list}}" wx:key="_id">
+    <view class="record-left">
+      <text class="record-amount">¥ {{item.amount}}</text>
+      <text class="record-note" wx:if="{{item.note}}">{{item.note}}</text>
+    </view>
+    <view class="record-right">
+      <text class="record-time">{{item.time}}</text>
+      <text class="record-status">已收</text>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{list.length === 0}}">
+    <text class="empty-text">暂无记录</text>
+  </view>
+</view>

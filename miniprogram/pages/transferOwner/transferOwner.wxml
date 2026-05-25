@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="warning-box">
+    <text class="warning-title">⚠️ 转让须知</text>
+    <text class="warning-desc">转让后你将变为普通成员，无法撤销。请确认选择的新店主是可信任的成员。</text>
+  </view>
+
+  <text class="section-title">选择新店主</text>
+
+  <view class="card member-list">
+    <view class="member-item {{item.userId === selectedId ? 'selected' : ''}}" wx:for="{{members}}" wx:key="_id" bindtap="selectMember" data-id="{{item.userId}}">
+      <view class="avatar" style="background: {{item.avatarColor}};">{{item.firstChar}}</view>
+      <view class="member-info">
+        <text class="member-name">{{item.nickName}}</text>
+        <text class="member-role">成员</text>
+      </view>
+      <view class="check-icon {{item.userId === selectedId ? 'checked' : ''}}">✓</view>
+    </view>
+  </view>
+
+  <button class="btn-confirm" bindtap="confirmTransfer" disabled="{{!selectedId}}">确认转让给{{selectedName}}</button>
+</view>

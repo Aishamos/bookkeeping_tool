@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/launch/launch",
+    "pages/createShop/createShop",
+    "pages/joinShop/joinShop",
+    "pages/index/index",
+    "pages/summary/summary",
+    "pages/detail/detail",
+    "pages/shopSettings/shopSettings",
+    "pages/myShops/myShops",
+    "pages/transferOwner/transferOwner"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#07C160",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#07C160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "记账",
+        "iconPath": "images/tab-record.png",
+        "selectedIconPath": "images/tab-record-active.png"
+      },
+      {
+        "pagePath": "pages/summary/summary",
+        "text": "汇总",
+        "iconPath": "images/tab-summary.png",
+        "selectedIconPath": "images/tab-summary-active.png"
+      },
+      {
+        "pagePath": "pages/shopSettings/shopSettings",
+        "text": "设置",
+        "iconPath": "images/tab-settings.png",
+        "selectedIconPath": "images/tab-settings-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

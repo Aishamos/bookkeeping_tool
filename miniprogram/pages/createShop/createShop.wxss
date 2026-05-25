@@ -1,0 +1,60 @@
+.container {
+  padding: 16px 12px;
+}
+
+.shop-name-input {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.result-card {
+  text-align: center;
+  background: #f0f9f0;
+  margin-top: 16px;
+}
+
+.success-text {
+  font-size: 14px;
+  color: #666;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.invite-code {
+  font-size: 36px;
+  font-weight: bold;
+  color: #07C160;
+  letter-spacing: 6px;
+  display: block;
+  margin: 16px 0;
+}
+
+.hint {
+  font-size: 13px;
+  color: #999;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.btn-copy {
+  background: #f0f9f0;
+  color: #07C160;
+  border: 1px solid #07C160;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.btn-copy::after {
+  border: none;
+}

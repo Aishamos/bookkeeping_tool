@@ -1,0 +1,44 @@
+<view class="page">
+  <view class="header">
+    <text class="header-label">今日待收</text>
+    <text class="header-amount">¥ {{totalAmount}}</text>
+    <text class="header-info">{{today}} · {{count}}笔未收</text>
+  </view>
+
+  <view class="container">
+    <view class="card input-card">
+      <view class="input-row">
+        <text class="symbol">¥</text>
+        <input class="amount-input" placeholder="输入金额" type="digit" value="{{amount}}" bindinput="onInputAmount" />
+      </view>
+      <button class="btn-primary" bindtap="addSale">记 录</button>
+    </view>
+
+    <view class="section-header">
+      <text class="section-title">待收记录</text>
+      <text class="section-hint">← 左滑标记已收</text>
+    </view>
+
+    <scroll-view class="list" scroll-y>
+      <view class="record-item" wx:for="{{list}}" wx:key="_id" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd" data-id="{{item._id}}" data-index="{{index}}">
+        <view class="record-content" style="right: {{item.slideRight || 0}}rpx;">
+          <view class="record-left">
+            <text class="record-amount">¥ {{item.amount}}</text>
+            <text class="record-note" wx:if="{{item.note}}">{{item.note}}</text>
+          </view>
+          <view class="record-right">
+            <text class="record-time">{{item.time}}</text>
+            <text class="record-status">待收</text>
+          </view>
+        </view>
+        <view class="record-actions">
+          <view class="action-collect" bindtap="markCollected" data-id="{{item._id}}">已收</view>
+        </view>
+      </view>
+
+      <view class="empty" wx:if="{{list.length === 0}}">
+        <text class="empty-text">暂无待收记录</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

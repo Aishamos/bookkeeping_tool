@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="card">
+    <text class="card-title">给你的店铺取个名字</text>
+    <input class="shop-name-input" placeholder="例如：老王鱼摊" value="{{shopName}}" bindinput="onInputName" />
+    <button class="btn-primary" bindtap="createShop" disabled="{{!shopName}}">创建店铺</button>
+  </view>
+
+  <view class="card result-card" wx:if="{{created}}">
+    <text class="success-text">✅ 店铺创建成功！邀请码：</text>
+    <text class="invite-code">{{inviteCodeFormatted}}</text>
+    <text class="hint">分享邀请码给家人，输入即可加入</text>
+    <button class="btn-copy" bindtap="copyCode">复制邀请码</button>
+    <button class="btn-primary" bindtap="enterShop">进入店铺</button>
+  </view>
+</view>

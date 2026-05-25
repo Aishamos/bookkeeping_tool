@@ -1,0 +1,174 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background: linear-gradient(135deg, #07C160, #06AD56);
+  color: #fff;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.header-label {
+  font-size: 14px;
+  opacity: 0.9;
+  display: block;
+}
+
+.header-amount {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 8px 0;
+  display: block;
+}
+
+.header-info {
+  font-size: 13px;
+  opacity: 0.8;
+  display: block;
+}
+
+.container {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.input-card {
+  margin-bottom: 10px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.symbol {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+.amount-input {
+  flex: 1;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 18px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0 10px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-hint {
+  font-size: 12px;
+  color: #999;
+}
+
+.list {
+  flex: 1;
+  overflow: hidden;
+}
+
+.record-item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border-radius: 10px;
+}
+
+.record-content {
+  background: #fff;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  right: 0;
+  z-index: 1;
+  transition: right 0.2s;
+}
+
+.record-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.record-amount {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.record-note {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.record-right {
+  text-align: right;
+}
+
+.record-time {
+  font-size: 14px;
+  color: #666;
+  display: block;
+}
+
+.record-status {
+  font-size: 11px;
+  color: #07C160;
+  margin-top: 4px;
+  display: block;
+}
+
+.record-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 160rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.action-collect {
+  background: #07C160;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.empty-text {
+  font-size: 14px;
+  color: #999;
+}

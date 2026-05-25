@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="card">
+    <text class="card-title">店铺名称</text>
+    <text class="card-value">{{shopName}}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">邀请码</text>
+    <view class="invite-row">
+      <text class="invite-code">{{inviteCodeFormatted}}</text>
+      <view class="btn-copy" bindtap="copyCode">复制</view>
+    </view>
+    <text class="hint">分享给家人，输入即可加入</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">成员（{{members.length}}人）</text>
+    <view class="member-item" wx:for="{{members}}" wx:key="_id">
+      <view class="avatar" style="background: {{item.avatarColor}};">{{item.firstChar}}</view>
+      <view class="member-info">
+        <text class="member-name">{{item.nickName}}</text>
+        <text class="member-role">{{item.role === 'owner' ? '店主' : '成员'}}</text>
+      </view>
+      <view wx:if="{{item.userId === myUserId}}" class="tag-me">我</view>
+      <view wx:elif="{{currentRole === 'owner' && item.role !== 'owner'}}" class="btn-transfer" bindtap="goTransfer" data-id="{{item.userId}}" data-name="{{item.nickName}}">转让店主</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="card-title">其他操作</text>
+    <view class="action-item" bindtap="goMyShops">
+      <text class="action-text">🏪 我的店铺</text>
+      <text class="action-arrow">›</text>
+    </view>
+    <view class="action-item action-exit" bindtap="dissolveShop" wx:if="{{currentRole === 'owner' && members.length === 1}}">
+      <text class="action-text-exit">💣 解散店铺</text>
+      <text class="action-arrow">›</text>
+    </view>
+    <view class="action-item action-exit" bindtap="exitShop" wx:if="{{currentRole !== 'owner'}}">
+      <text class="action-text-exit">🚪 退出店铺</text>
+      <text class="action-arrow">›</text>
+    </view>
+  </view>
+</view>
