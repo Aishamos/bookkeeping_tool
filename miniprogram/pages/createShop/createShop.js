@@ -11,12 +11,18 @@ Page({
     shopId: ''
   },
 
-  onChooseAvatar(e) {
-    this.setData({ avatarUrl: e.detail.avatarUrl })
-  },
-
-  onInputNickName(e) {
-    this.setData({ nickName: e.detail.value })
+  onLoad(options) {
+    if (options.nickName && options.avatarUrl) {
+      this.setData({
+        nickName: decodeURIComponent(options.nickName),
+        avatarUrl: decodeURIComponent(options.avatarUrl)
+      })
+    } else {
+      wx.cloud.callFunction({ name: 'getMyProfile' }).then(res => {
+        if (res.result.nickName) this.setData({ nickName: res.result.nickName })
+        if (res.result.avatarUrl) this.setData({ avatarUrl: res.result.avatarUrl })
+      })
+    }
   },
 
   onInputName(e) {

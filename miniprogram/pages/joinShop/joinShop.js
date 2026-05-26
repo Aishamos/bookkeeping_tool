@@ -4,33 +4,45 @@ Page({
   data: {
     code: ['', '', '', '', '', ''],
     focusIndex: 0,
+    inputValue: '',
+    inputFocus: true,
     nickName: '',
     avatarUrl: ''
   },
 
-  onChooseAvatar(e) {
-    this.setData({ avatarUrl: e.detail.avatarUrl })
-  },
-
-  onInputNickName(e) {
-    this.setData({ nickName: e.detail.value })
-  },
-
-  onInput(e) {
-    const index = parseInt(e.currentTarget.dataset.index)
-    const value = e.detail.value
-    const code = [...this.data.code]
-
-    code[index] = value
-    this.setData({ code })
-
-    if (value && index < 5) {
-      this.setData({ focusIndex: index + 1 })
+  onLoad(options) {
+    if (options.nickName && options.avatarUrl) {
+      this.setData({
+        nickName: decodeURIComponent(options.nickName),
+        avatarUrl: decodeURIComponent(options.avatarUrl)
+      })
+    } else {
+      wx.cloud.callFunction({ name: 'getMyProfile' }).then(res => {
+        if (res.result.nickName) this.setData({ nickName: res.result.nickName })
+        if (res.result.avatarUrl) this.setData({ avatarUrl: res.result.avatarUrl })
+      })
     }
   },
 
+  focusInput() {
+    this.setData({ inputFocus: true })
+  },
+
+  onInput(e) {
+    const value = e.detail.value.replace(/[^0-9]/g, '').slice(0, 6)
+    const code = ['', '', '', '', '', '']
+    for (let i = 0; i < value.length; i++) {
+      code[i] = value[i]
+    }
+    this.setData({
+      code,
+      inputValue: value,
+      focusIndex: value.length
+    })
+  },
+
   joinShop() {
-    const inviteCode = this.data.code.join('')
+    const inviteCode = this.data.inputValue
     if (inviteCode.length < 6) return
 
     wx.showLoading({ title: '加入中...' })

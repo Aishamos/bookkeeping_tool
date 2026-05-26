@@ -40,12 +40,20 @@ Page({
       name: 'getPendingList',
       data: { shopId: this.data.shopId }
     }).then(res => {
+      if (res.result.error) {
+        shopUtil.clearCurrentShopId()
+        wx.redirectTo({ url: '/pages/launch/launch' })
+        return
+      }
       const { list, totalAmount, count } = res.result
       this.setData({
         list: list.map(item => ({ ...item, slideRight: 0 })),
         totalAmount: totalAmount.toFixed(2),
         count
       })
+    }).catch(() => {
+      shopUtil.clearCurrentShopId()
+      wx.redirectTo({ url: '/pages/launch/launch' })
     })
   },
 

@@ -20,6 +20,9 @@ Page({
       wx.redirectTo({ url: '/pages/launch/launch' })
       return
     }
+    if (shopId === this.data.shopId && this.data.shopName) {
+      return
+    }
     this.setData({ shopId, loading: true })
     this.loadShopInfo()
   },
@@ -48,8 +51,8 @@ Page({
         loading: false
       })
     }).catch(() => {
-      this.setData({ loading: false })
-      wx.showToast({ title: '加载失败', icon: 'none' })
+      shopUtil.clearCurrentShopId()
+      wx.redirectTo({ url: '/pages/launch/launch' })
     })
   },
 

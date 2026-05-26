@@ -7,12 +7,11 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const openid = wxContext.OPENID
 
-  const shopResult = await db.collection('shops').doc(shopId).get()
+  const [shopResult, membersResult] = await Promise.all([
+    db.collection('shops').doc(shopId).get(),
+    db.collection('members').where({ shopId }).orderBy('joinTime', 'asc').get()
+  ])
   const shop = shopResult.data
-
-  const membersResult = await db.collection('members').where({
-    shopId
-  }).orderBy('joinTime', 'asc').get()
 
   const currentMember = membersResult.data.find(m => m.userId === openid)
   if (!currentMember) {

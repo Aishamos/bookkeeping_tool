@@ -6,6 +6,11 @@ const _ = db.command
 exports.main = async (event, context) => {
   const { shopId, startDate, endDate, type } = event
 
+  const shopCheck = await db.collection('shops').doc(shopId).get().catch(() => null)
+  if (!shopCheck) {
+    return { error: '店铺不存在' }
+  }
+
   const result = await db.collection('sales').where({
     shopId,
     status: 'collected',

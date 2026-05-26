@@ -5,6 +5,11 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const { shopId } = event
 
+  const shopCheck = await db.collection('shops').doc(shopId).get().catch(() => null)
+  if (!shopCheck) {
+    return { error: '店铺不存在' }
+  }
+
   const result = await db.collection('sales').where({
     shopId,
     status: 'pending'

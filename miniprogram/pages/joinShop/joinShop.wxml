@@ -1,29 +1,19 @@
 <view class="container">
-  <view class="card">
-    <text class="card-title">你的信息</text>
-    <view class="profile-row">
-      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
-        <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}" mode="aspectFill" />
-        <view wx:else class="avatar-placeholder">头像</view>
-      </button>
-      <input class="nickname-input" type="nickname" placeholder="点击获取微信昵称" value="{{nickName}}" bindinput="onInputNickName" />
-    </view>
-  </view>
-
   <view class="welcome">
     <text class="icon">🔗</text>
     <text class="title">输入邀请码加入店铺</text>
     <text class="desc">向店铺创建者获取6位邀请码</text>
   </view>
 
-  <view class="code-inputs">
-    <input class="code-input {{code[0] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[0]}}" bindinput="onInput" data-index="0" focus="{{focusIndex === 0}}" />
-    <input class="code-input {{code[1] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[1]}}" bindinput="onInput" data-index="1" focus="{{focusIndex === 1}}" />
-    <input class="code-input {{code[2] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[2]}}" bindinput="onInput" data-index="2" focus="{{focusIndex === 2}}" />
-    <input class="code-input {{code[3] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[3]}}" bindinput="onInput" data-index="3" focus="{{focusIndex === 3}}" />
-    <input class="code-input {{code[4] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[4]}}" bindinput="onInput" data-index="4" focus="{{focusIndex === 4}}" />
-    <input class="code-input {{code[5] ? 'filled' : ''}}" maxlength="1" type="number" value="{{code[5]}}" bindinput="onInput" data-index="5" focus="{{focusIndex === 5}}" />
+  <view class="code-inputs" bindtap="focusInput">
+    <view class="code-input {{code[0] ? 'filled' : ''}} {{focusIndex === 0 && code[0] === '' ? 'active' : ''}}">{{code[0]}}</view>
+    <view class="code-input {{code[1] ? 'filled' : ''}} {{focusIndex === 1 && code[1] === '' ? 'active' : ''}}">{{code[1]}}</view>
+    <view class="code-input {{code[2] ? 'filled' : ''}} {{focusIndex === 2 && code[2] === '' ? 'active' : ''}}">{{code[2]}}</view>
+    <view class="code-input {{code[3] ? 'filled' : ''}} {{focusIndex === 3 && code[3] === '' ? 'active' : ''}}">{{code[3]}}</view>
+    <view class="code-input {{code[4] ? 'filled' : ''}} {{focusIndex === 4 && code[4] === '' ? 'active' : ''}}">{{code[4]}}</view>
+    <view class="code-input {{code[5] ? 'filled' : ''}} {{focusIndex === 5 && code[5] === '' ? 'active' : ''}}">{{code[5]}}</view>
+    <input class="hidden-input" type="number" maxlength="6" value="{{inputValue}}" bindinput="onInput" focus="{{inputFocus}}" />
   </view>
 
-  <button class="btn-primary" bindtap="joinShop" disabled="{{code.join('').length < 6}}">加入店铺</button>
+  <button class="btn-primary" bindtap="joinShop" disabled="{{inputValue.length < 6}}">加入店铺</button>
 </view>

@@ -57,6 +57,11 @@ Page({
       name: 'getSummary',
       data: { shopId, startDate, endDate }
     }).then(res => {
+      if (res.result.error) {
+        shopUtil.clearCurrentShopId()
+        wx.redirectTo({ url: '/pages/launch/launch' })
+        return
+      }
       const { todayAmount, todayCount, todayRecords, dailyList, monthlyList } = res.result
 
       this.setData({
@@ -73,6 +78,9 @@ Page({
           amountFixed: m.amount.toFixed(2)
         }))
       })
+    }).catch(() => {
+      shopUtil.clearCurrentShopId()
+      wx.redirectTo({ url: '/pages/launch/launch' })
     })
   },
 
