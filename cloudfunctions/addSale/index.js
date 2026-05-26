@@ -16,9 +16,15 @@ exports.main = async (event, context) => {
     return { error: '你不是该店铺成员' }
   }
 
-  const now = new Date()
-  const date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
-  const time = `${date} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+  let date, time
+  if (event.date && event.time) {
+    date = event.date
+    time = event.time
+  } else {
+    const now = new Date()
+    date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+    time = `${date} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+  }
 
   const result = await db.collection('sales').add({
     data: {

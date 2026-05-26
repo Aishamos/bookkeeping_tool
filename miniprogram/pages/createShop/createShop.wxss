@@ -58,3 +58,49 @@
 .btn-copy::after {
   border: none;
 }
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.avatar-btn {
+  width: 60px;
+  height: 60px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  line-height: normal;
+}
+
+.avatar-btn::after {
+  border: none;
+}
+
+.avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.avatar-placeholder {
+  font-size: 13px;
+  color: #999;
+}
+
+.nickname-input {
+  flex: 1;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+}

@@ -62,11 +62,17 @@ Page({
 
     wx.showLoading({ title: '记录中...' })
 
+    const now = new Date()
+    const date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+    const time = `${date} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+
     wx.cloud.callFunction({
       name: 'addSale',
       data: {
         shopId,
-        amount: parseFloat(amount)
+        amount: parseFloat(amount),
+        date,
+        time
       }
     }).then(res => {
       wx.hideLoading()

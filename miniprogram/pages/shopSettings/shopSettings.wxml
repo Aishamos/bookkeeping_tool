@@ -16,7 +16,8 @@
   <view class="card">
     <text class="card-title">成员（{{members.length}}人）</text>
     <view class="member-item" wx:for="{{members}}" wx:key="_id">
-      <view class="avatar" style="background: {{item.avatarColor}};">{{item.firstChar}}</view>
+      <image wx:if="{{item.avatarUrl}}" class="avatar-img" src="{{item.avatarUrl}}" mode="aspectFill" />
+      <view wx:else class="avatar" style="background: {{item.avatarColor}};">{{item.firstChar}}</view>
       <view class="member-info">
         <text class="member-name">{{item.nickName}}</text>
         <text class="member-role">{{item.role === 'owner' ? '店主' : '成员'}}</text>
@@ -26,7 +27,7 @@
     </view>
   </view>
 
-  <view class="card">
+  <view class="card" wx:if="{{!loading}}">
     <text class="card-title">其他操作</text>
     <view class="action-item" bindtap="goMyShops">
       <text class="action-text">🏪 我的店铺</text>

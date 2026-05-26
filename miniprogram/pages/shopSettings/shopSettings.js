@@ -9,8 +9,9 @@ Page({
     inviteCode: '',
     inviteCodeFormatted: '',
     members: [],
-    currentRole: '',
-    myUserId: ''
+    currentRole: 'owner',
+    myUserId: '',
+    loading: true
   },
 
   onShow() {
@@ -19,7 +20,7 @@ Page({
       wx.redirectTo({ url: '/pages/launch/launch' })
       return
     }
-    this.setData({ shopId })
+    this.setData({ shopId, loading: true })
     this.loadShopInfo()
   },
 
@@ -43,8 +44,12 @@ Page({
           avatarColor: AVATAR_COLORS[i % AVATAR_COLORS.length]
         })),
         currentRole,
-        myUserId: myMember ? myMember.userId : ''
+        myUserId: myMember ? myMember.userId : '',
+        loading: false
       })
+    }).catch(() => {
+      this.setData({ loading: false })
+      wx.showToast({ title: '加载失败', icon: 'none' })
     })
   },
 

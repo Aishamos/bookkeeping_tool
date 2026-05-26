@@ -36,6 +36,7 @@ exports.main = async (event, context) => {
       shopId,
       userId: openid,
       nickName: event.nickName || '店主',
+      avatarUrl: event.avatarUrl || '',
       role: 'owner',
       joinTime: db.serverDate()
     }

@@ -3,10 +3,20 @@ const shopUtil = require('../../utils/shop')
 Page({
   data: {
     shopName: '',
+    nickName: '',
+    avatarUrl: '',
     created: false,
     inviteCode: '',
     inviteCodeFormatted: '',
     shopId: ''
+  },
+
+  onChooseAvatar(e) {
+    this.setData({ avatarUrl: e.detail.avatarUrl })
+  },
+
+  onInputNickName(e) {
+    this.setData({ nickName: e.detail.value })
   },
 
   onInputName(e) {
@@ -22,7 +32,8 @@ Page({
       name: 'createShop',
       data: {
         name: this.data.shopName,
-        nickName: '店主'
+        nickName: this.data.nickName || '店主',
+        avatarUrl: this.data.avatarUrl
       }
     }).then(res => {
       wx.hideLoading()
